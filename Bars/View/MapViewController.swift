@@ -4,7 +4,6 @@ import MapKit
 
 fileprivate let annotationViewID = "pin_view"
 
-
 protocol MapViewProtocol: class {
 	func updateMap(with pins: [MKPointAnnotation])
 }
@@ -19,12 +18,6 @@ class MapViewController: UIViewController {
 		presenter = MapPresenter(view: self)
 		presenter.getPins()
 	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		
-	}
 }
 
 extension MapViewController: MapViewProtocol {
@@ -34,10 +27,6 @@ extension MapViewController: MapViewProtocol {
 }
 
 extension MapViewController: MKMapViewDelegate {
-	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-		
-	}
-	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		var view = mapView.dequeueReusableAnnotationView(withIdentifier: annotationViewID) as? MKPinAnnotationView
 		if view == nil {
